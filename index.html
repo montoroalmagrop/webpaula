@@ -1,1 +1,526 @@
-Pagina web de Paula 
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f7f8f3">
+	<meta name="description" content="Perfil profesional de Paula, Data Analyst. Análisis, visualización y comunicación de datos para tomar mejores decisiones.">
+	<title>Paula | Data Analyst</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			color-scheme: light;
+			--paper: #f7f8f3;
+			--ink: #20251f;
+			--muted: #656c63;
+			--line: #dfe3d9;
+			--lime: #d8f36a;
+			--coral: #e76d52;
+			--green: #355d4d;
+			--mono: "DM Mono", monospace;
+			--body: "DM Sans", sans-serif;
+			--display: "Manrope", sans-serif;
+		}
+
+		* { box-sizing: border-box; }
+
+		html { scroll-behavior: smooth; }
+
+		body {
+			margin: 0;
+			color: var(--ink);
+			background-color: var(--paper);
+			background-image: radial-gradient(#cbd1c4 0.7px, transparent 0.7px);
+			background-size: 19px 19px;
+			font-family: var(--body);
+			-webkit-font-smoothing: antialiased;
+		}
+
+		a { color: inherit; }
+
+		.page-shell {
+			width: min(1120px, calc(100% - 48px));
+			margin-inline: auto;
+		}
+
+		.topbar {
+			min-height: 82px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.wordmark {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			text-decoration: none;
+			font-family: var(--display);
+			font-size: 15px;
+			font-weight: 800;
+		}
+
+		.mark {
+			width: 30px;
+			aspect-ratio: 1;
+			display: grid;
+			place-items: center;
+			border-radius: 50%;
+			background: var(--lime);
+			font-family: var(--mono);
+			font-size: 12px;
+		}
+
+		.nav-links {
+			display: flex;
+			align-items: center;
+			gap: 32px;
+			font-size: 13px;
+		}
+
+		.nav-links a { text-decoration: none; }
+		.nav-links a:hover { color: var(--green); }
+
+		.hero {
+			min-height: 590px;
+			display: grid;
+			grid-template-columns: 1.1fr 0.9fr;
+			align-items: center;
+			gap: 76px;
+			padding-block: 74px 82px;
+		}
+
+		.eyebrow {
+			display: inline-flex;
+			align-items: center;
+			gap: 9px;
+			margin: 0 0 22px;
+			color: var(--green);
+			font-family: var(--mono);
+			font-size: 11px;
+			letter-spacing: 0.04em;
+			text-transform: uppercase;
+		}
+
+		.eyebrow::before {
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: var(--coral);
+			content: "";
+		}
+
+		h1, h2, h3, p { margin-top: 0; }
+
+		h1 {
+			max-width: 610px;
+			margin-bottom: 22px;
+			font-family: var(--display);
+			font-size: clamp(48px, 6vw, 76px);
+			font-weight: 700;
+			line-height: 1.02;
+		}
+
+		h1 span {
+			text-decoration: underline;
+			text-decoration-color: var(--coral);
+			text-decoration-thickness: 5px;
+			text-underline-offset: 7px;
+		}
+
+		.intro {
+			max-width: 500px;
+			margin-bottom: 30px;
+			color: var(--muted);
+			font-size: 17px;
+			line-height: 1.75;
+		}
+
+		.hero-actions {
+			display: flex;
+			align-items: center;
+			gap: 22px;
+		}
+
+		.button {
+			min-height: 48px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			padding: 0 18px;
+			border: 1px solid var(--ink);
+			border-radius: 3px;
+			background: var(--ink);
+			color: white;
+			font-size: 13px;
+			font-weight: 600;
+			text-decoration: none;
+			transition: transform 160ms ease, background 160ms ease;
+		}
+
+		.button:hover { transform: translateY(-2px); background: var(--green); }
+
+		.text-link {
+			font-size: 13px;
+			font-weight: 600;
+			text-decoration-color: var(--coral);
+			text-underline-offset: 4px;
+		}
+
+		.chart-frame {
+			position: relative;
+			padding: 22px;
+			border: 1px solid #cdd3c6;
+			background: rgba(255, 255, 255, 0.78);
+			box-shadow: 12px 12px 0 var(--lime);
+			animation: rise-in 650ms ease-out both;
+		}
+
+		.chart-topline {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: 12px;
+			padding-bottom: 19px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.chart-label {
+			margin-bottom: 6px;
+			color: var(--muted);
+			font-family: var(--mono);
+			font-size: 10px;
+			text-transform: uppercase;
+		}
+
+		.chart-title { margin: 0; font-family: var(--display); font-size: 17px; }
+
+		.chart-period {
+			padding: 6px 8px;
+			background: #eef1e8;
+			font-family: var(--mono);
+			font-size: 9px;
+			white-space: nowrap;
+		}
+
+		.chart-summary {
+			display: flex;
+			align-items: baseline;
+			gap: 9px;
+			padding-top: 17px;
+		}
+
+		.chart-summary strong { font-family: var(--display); font-size: 32px; }
+		.chart-summary span { color: var(--green); font-family: var(--mono); font-size: 11px; }
+
+		.chart {
+			height: 178px;
+			display: flex;
+			align-items: end;
+			gap: 10px;
+			padding: 16px 3px 0;
+			border-bottom: 1px solid var(--line);
+			background: repeating-linear-gradient(to bottom, transparent 0 42px, #e8ebe3 43px 44px);
+		}
+
+		.bar {
+			flex: 1;
+			min-width: 10px;
+			height: var(--height);
+			background: var(--green);
+			transform-origin: bottom;
+			animation: grow 850ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+			animation-delay: var(--delay, 0ms);
+		}
+
+		.bar:nth-child(3n) { background: var(--coral); }
+		.bar:nth-child(5n) { background: #8ca65a; }
+
+		.chart-axis {
+			display: flex;
+			justify-content: space-between;
+			padding-top: 9px;
+			color: var(--muted);
+			font-family: var(--mono);
+			font-size: 9px;
+		}
+
+		.chart-note {
+			position: absolute;
+			right: -20px;
+			bottom: 69px;
+			width: 116px;
+			padding: 12px;
+			background: var(--ink);
+			color: white;
+			font-family: var(--mono);
+			font-size: 10px;
+			line-height: 1.5;
+			transform: rotate(3deg);
+		}
+
+		.chart-note strong { display: block; color: var(--lime); font-size: 16px; }
+
+		.section {
+			padding-block: 72px;
+			border-top: 1px solid var(--line);
+		}
+
+		.section-heading {
+			display: grid;
+			grid-template-columns: 0.75fr 1.25fr;
+			gap: 60px;
+			align-items: start;
+			margin-bottom: 38px;
+		}
+
+		.section-index {
+			margin: 7px 0 0;
+			color: var(--coral);
+			font-family: var(--mono);
+			font-size: 11px;
+		}
+
+		h2 {
+			margin-bottom: 0;
+			font-family: var(--display);
+			font-size: clamp(30px, 4vw, 43px);
+			line-height: 1.12;
+		}
+
+		.about-copy {
+			max-width: 650px;
+			margin: 18px 0 0;
+			color: var(--muted);
+			font-size: 16px;
+			line-height: 1.8;
+		}
+
+		.capabilities {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			border-top: 1px solid var(--line);
+			border-bottom: 1px solid var(--line);
+		}
+
+		.capability {
+			min-height: 174px;
+			padding: 23px 24px 24px 0;
+		}
+
+		.capability + .capability {
+			padding-left: 24px;
+			border-left: 1px solid var(--line);
+		}
+
+		.capability-number {
+			display: block;
+			margin-bottom: 25px;
+			color: var(--coral);
+			font-family: var(--mono);
+			font-size: 11px;
+		}
+
+		h3 { margin-bottom: 9px; font-family: var(--display); font-size: 18px; }
+
+		.capability p {
+			max-width: 270px;
+			margin-bottom: 0;
+			color: var(--muted);
+			font-size: 13px;
+			line-height: 1.65;
+		}
+
+		.toolbox {
+			display: grid;
+			grid-template-columns: 0.75fr 1.25fr;
+			gap: 60px;
+			align-items: start;
+		}
+
+		.toolbox p {
+			max-width: 620px;
+			margin: 0;
+			color: var(--muted);
+			font-size: 15px;
+			line-height: 1.75;
+		}
+
+		.tool-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-top: 20px;
+		}
+
+		.tool {
+			padding: 9px 12px;
+			border: 1px solid var(--line);
+			background: rgba(255, 255, 255, 0.65);
+			font-family: var(--mono);
+			font-size: 11px;
+		}
+
+		.footer {
+			display: flex;
+			justify-content: space-between;
+			gap: 20px;
+			padding-block: 23px 30px;
+			border-top: 1px solid var(--line);
+			color: var(--muted);
+			font-family: var(--mono);
+			font-size: 10px;
+		}
+
+		@keyframes grow { from { transform: scaleY(0.08); } to { transform: scaleY(1); } }
+		@keyframes rise-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+		}
+
+		@media (max-width: 760px) {
+			.page-shell { width: min(100% - 36px, 560px); }
+			.topbar { min-height: 70px; }
+			.nav-links { gap: 17px; font-size: 12px; }
+			.hero { min-height: 0; grid-template-columns: 1fr; gap: 54px; padding-block: 65px 72px; }
+			.hero-copy { max-width: 600px; }
+			.chart-frame { width: calc(100% - 12px); }
+			.chart-note { right: -12px; }
+			.section { padding-block: 58px; }
+			.section-heading, .toolbox { grid-template-columns: 1fr; gap: 15px; }
+			.section-heading { margin-bottom: 28px; }
+			.capabilities { grid-template-columns: 1fr; }
+			.capability, .capability + .capability { min-height: 0; padding: 20px 0; border-left: 0; }
+			.capability + .capability { border-top: 1px solid var(--line); }
+			.capability-number { margin-bottom: 14px; }
+		}
+
+		@media (max-width: 420px) {
+			.page-shell { width: calc(100% - 30px); }
+			.nav-links { gap: 12px; font-size: 11px; }
+			h1 { font-size: 46px; }
+			.intro { font-size: 15px; }
+			.hero-actions { align-items: flex-start; flex-direction: column; gap: 15px; }
+			.chart-frame { padding: 16px; }
+			.chart { gap: 6px; }
+			.chart-note { bottom: 58px; width: 104px; }
+			.footer { flex-direction: column; gap: 8px; }
+		}
+	</style>
+</head>
+<body>
+	<header class="page-shell topbar">
+		<a class="wordmark" href="#inicio" aria-label="Paula, inicio">
+			<span class="mark" aria-hidden="true">P.</span>
+			<span>Paula</span>
+		</a>
+		<nav class="nav-links" aria-label="Navegación principal">
+			<a href="#sobre-mi">Sobre mí</a>
+			<a href="#enfoque">Enfoque</a>
+			<a href="#herramientas">Áreas de trabajo</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="page-shell hero" id="inicio" aria-labelledby="hero-title">
+			<div class="hero-copy">
+				<p class="eyebrow">Perfil profesional</p>
+				<h1 id="hero-title">Hola, soy Paula.<br><span>Data Analyst</span></h1>
+				<p class="intro">Convierto datos en respuestas claras. Me interesa encontrar patrones, hacer las preguntas correctas y ayudar a tomar decisiones con confianza.</p>
+				<div class="hero-actions">
+					<a class="button" href="#sobre-mi">Conoce mi perfil <span aria-hidden="true">&#8594;</span></a>
+					  <a class="text-link" href="#herramientas">Áreas de trabajo</a>
+				</div>
+			</div>
+
+			<div class="chart-frame" role="img" aria-label="Gráfico ilustrativo de tendencia ascendente en una serie de datos mensual">
+				<div class="chart-topline">
+					<div>
+						<p class="chart-label">Visual ilustrativa</p>
+						<h2 class="chart-title">Tendencia de ejemplo</h2>
+					</div>
+					<span class="chart-period">ENE — DIC</span>
+				</div>
+				<div class="chart-summary"><strong>Explorar</strong><span>visualizar</span></div>
+				<div class="chart" aria-hidden="true">
+					<span class="bar" style="--height: 34%; --delay: 30ms"></span>
+					<span class="bar" style="--height: 45%; --delay: 80ms"></span>
+					<span class="bar" style="--height: 39%; --delay: 130ms"></span>
+					<span class="bar" style="--height: 56%; --delay: 180ms"></span>
+					<span class="bar" style="--height: 51%; --delay: 230ms"></span>
+					<span class="bar" style="--height: 63%; --delay: 280ms"></span>
+					<span class="bar" style="--height: 58%; --delay: 330ms"></span>
+					<span class="bar" style="--height: 72%; --delay: 380ms"></span>
+					<span class="bar" style="--height: 66%; --delay: 430ms"></span>
+					<span class="bar" style="--height: 82%; --delay: 480ms"></span>
+					<span class="bar" style="--height: 76%; --delay: 530ms"></span>
+					<span class="bar" style="--height: 94%; --delay: 580ms"></span>
+				</div>
+				<div class="chart-axis" aria-hidden="true"><span>ENE</span><span>ABR</span><span>AGO</span><span>DIC</span></div>
+				<div class="chart-note" aria-hidden="true"><strong>Datos</strong>con contexto<br>y propósito</div>
+			</div>
+		</section>
+
+		<section class="page-shell section" id="sobre-mi" aria-labelledby="about-title">
+			<div class="section-heading">
+				<p class="section-index">01 / SOBRE MÍ</p>
+				<div>
+					<h2 id="about-title">Curiosidad para explorar.<br>Claridad para explicar.</h2>
+					<p class="about-copy">Como analista de datos, disfruto acompañar el recorrido completo: entender el problema, preparar la información, descubrir qué cuenta y compartirlo de una forma que invite a actuar. Para mí, un buen análisis no termina en un gráfico: empieza con una buena pregunta.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="page-shell section" id="enfoque" aria-labelledby="approach-title">
+			<div class="section-heading">
+				<p class="section-index">02 / ENFOQUE</p>
+				<h2 id="approach-title">De datos dispersos<br>a decisiones concretas.</h2>
+			</div>
+			<div class="capabilities">
+				<article class="capability">
+					<span class="capability-number">01</span>
+					<h3>Explorar</h3>
+					<p>Identificar tendencias, relaciones y oportunidades haciendo las preguntas adecuadas.</p>
+				</article>
+				<article class="capability">
+					<span class="capability-number">02</span>
+					<h3>Dar estructura</h3>
+					<p>Limpiar y organizar la información para construir una base confiable para el análisis.</p>
+				</article>
+				<article class="capability">
+					<span class="capability-number">03</span>
+					<h3>Comunicar</h3>
+					<p>Traducir hallazgos en visualizaciones y conclusiones fáciles de entender y usar.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="page-shell section" id="herramientas" aria-labelledby="tools-title">
+			<div class="toolbox">
+				<p class="section-index">03 / HERRAMIENTAS</p>
+				<div>
+					<h2 id="tools-title">Un buen análisis<br>empieza con una pregunta.</h2>
+					<p>Un enfoque flexible para explorar información, encontrar patrones y comunicar hallazgos con claridad.</p>
+					  <div class="tool-list" aria-label="Áreas de trabajo">
+						<span class="tool">Análisis exploratorio</span>
+						<span class="tool">Limpieza de datos</span>
+						<span class="tool">Visualización</span>
+						<span class="tool">Comunicación</span>
+						<span class="tool">Toma de decisiones</span>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="page-shell footer">
+		<span>Paula · Data Analyst</span>
+		<span>Datos con sentido, decisiones con dirección.</span>
+	</footer>
+</body>
+</html>
